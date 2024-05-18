@@ -22,7 +22,7 @@
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                  <a href="{{ route("contact_response") }}">Respon</a>
+                  <a href="{{ route("contact_response") }}">Total Respon</a>
                 </div>
                 <div class="h5 mb-0 font-weight-bold text-gray-800">
                   {{ $totalResponse }}
@@ -43,7 +43,7 @@
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                  Today</div>
+                  Today Respon</div>
                 <div class="h5 mb-0 font-weight-bold text-gray-800">
                   {{ $todayResponse }}
                 </div>
@@ -62,7 +62,7 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Yesterday
+                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Yesterday Respon
                 </div>
                 <div class="row no-gutters align-items-center">
                   <div class="col-auto">

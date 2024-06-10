@@ -38,7 +38,12 @@
           <!-- Header profile picture-->
           <div class="d-flex justify-content-center mt-5 mt-xxl-0">
             <div class="profile d-flex justify-content-center align-items-center">
-              <img class="profile-img rounded-circle" src="{{ asset("asset/public/assets/emi.png") }}" alt="foto" />
+              @if ($home == null)
+                <img class="profile-img rounded-circle" src="{{ asset("asset/public/assets/img.jpg") }}" alt="foto" />
+              @else
+                <img class="profile-img rounded-circle" src="{{ Storage::url($home->file) }}" alt="foto" />
+              @endif
+
             </div>
           </div>
         </div>

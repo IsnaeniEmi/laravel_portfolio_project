@@ -33,7 +33,7 @@ class PendidikanModel extends Model
         if (isset($data['file']) && $data['file']->isValid()) {
             $fileName = time() . '_' . $data['file']->getClientOriginalName();
             $filePath = $data['file']->storeAs('uploads', $fileName, 'public');
-            $pendidikan->foto = $filePath;
+            $pendidikan->file = $filePath;
         }
         $pendidikan->save();
 

@@ -9,11 +9,10 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
-    public function __construct(HomeModel $home, FooterModel $footer, Request $request)
+    public function __construct(HomeModel $home, FooterModel $footer)
     {
         $this->home = $home;
         $this->footer = $footer;
-        $this->request = $request;
     }
 
     public function index()
@@ -24,18 +23,32 @@ class SettingController extends Controller
         return view('pages.private.setting', compact('home', 'footer'));
     }
 
-    public function storeHome()
+    public function storeHome(Request $request)
     {
-        $this->home->saveData($this->request->all());
+        $request->validate([
+            'judul_besar' => 'required|string|max:255',
+            'deskripsi_judul' => 'required|string|max:255',
+            'deskripsi_about' => 'required|string|max:255',
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-        return redirect()->route('admin_setting');
+        $this->home->saveData($request->all());
+
+        return redirect()->route('admin_setting')->with('success', 'Data berhasil ditambahkan.');;
     }
 
-    public function updateHome($id)
+    public function updateHome(Request $request, $id)
     {
-        $this->home->UpdateData($id, $this->request->all());
+        $request->validate([
+            'judul_besar' => 'required|string|max:255',
+            'deskripsi_judul' => 'required|string|max:255',
+            'deskripsi_about' => 'required|string|max:255',
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-        return redirect()->route('admin_setting');
+        $this->home->UpdateData($id, $request->all());
+
+        return redirect()->route('admin_setting')->with('success', 'Data berhasil Diubah.');;
     }
 
     public function destroyHome($id)

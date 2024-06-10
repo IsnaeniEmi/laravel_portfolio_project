@@ -61,3 +61,7 @@ Route::delete('/destroy_setting_home/{id}', [SettingController::class, 'destroyH
 Route::post('/store_footer', [SettingController::class, 'storeFooter'])->name('store_footer');
 Route::put('/update_setting_footer/{id}', [SettingController::class, 'updateFooter'])->name('update_setting_footer');
 Route::delete('/destroy_setting_footer/{id}', [SettingController::class, 'destroyFooter'])->name('destroy_setting_footer');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

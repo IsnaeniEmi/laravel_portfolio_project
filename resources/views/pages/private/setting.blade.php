@@ -59,6 +59,9 @@
                   <div class="form-group">
                     Deskripsi 2:
                   </div>
+                  <div>
+                    <img src="" alt="Foto" width="100">
+                  </div>
                 </div>
               @else
                 <div class="mb-4">
@@ -71,6 +74,9 @@
                   </div>
                   <div class="form-group">
                     Deskripsi 2: {{ $home->deskripsi_about }}
+                  </div>
+                  <div>
+                    <img src="{{ Storage::url($home->file) }}" alt="Foto" width="100">
                   </div>
                 </div>
               @endif
@@ -104,7 +110,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form action="{{ route("store_home") }}" method="POST">
+                  <form action="{{ route("store_home") }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                       <label for="judul_besar" class="col-form-label">Judul Besar</label>
@@ -117,6 +123,10 @@
                     <div class="form-group">
                       <label for="deskripsi_about" class="col-form-label">Deskripsi 2</label>
                       <textarea name="deskripsi_about" class="form-control" id="deskripsi_about"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="file" class="col-form-label">Foto</label>
+                      <input type="file" name="file" class="form-control-file" id="file">
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -184,7 +194,8 @@
                     </div>
                   </form>
                 @else
-                  <form class="user" action="{{ route("update_setting_home", $home->id) }}" method="POST">
+                  <form class="user" action="{{ route("update_setting_home", $home->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
                     <div class="form-group">
@@ -200,6 +211,13 @@
                     <div class="form-group">
                       <label for="deskripsi_about">Deskripsi 2</label>
                       <textarea name="deskripsi_about" class="form-control" id="deskripsi_about">{{ $home->deskripsi_about }}</textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="file">Upload Foto:</label>
+                      <input type="file" name="file" id="file" class="form-control-file">
+                      @if ($home->file)
+                        <img src="{{ Storage::url($home->file) }}" alt="Foto" width="100">
+                      @endif
                     </div>
                     <div class="row justify-content-end pr-3">
                       <button type="submit" class="btn btn-primary">Ubah Home</button>

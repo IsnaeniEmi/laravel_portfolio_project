@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('judul_besar');
             $table->string('deskripsi_judul');
             $table->string('deskripsi_about');
+            $table->string('file')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -22,6 +22,12 @@ use App\Http\Controllers\Private\PengalamanController;
 |
 */
 
+// Error Handler
+// Fallback route untuk menangani 404
+Route::fallback(function () {
+    return response()->view('pages.error.404_not_found', [], 404);
+});
+
 // Public Area
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
@@ -64,4 +70,4 @@ Route::delete('/destroy_setting_footer/{id}', [SettingController::class, 'destro
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home_login');
